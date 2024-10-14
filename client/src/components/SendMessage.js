@@ -18,14 +18,19 @@ const SendMessage = ({scroll, to}) => {
         }
 
         const { uid, displayName } = auth.currentUser;
-        await addDoc(collection(db, "messages"), {
-          text: message,
-          from: displayName,
-          to: to,
-          createdAt: serverTimestamp(),
-          uid,
-        });
-        setMessage("");
+
+        //TODO: call addDoc function to add a new message to Firestore Database
+
+        // Here are the fields we want for a message document:
+        // {
+        //   text: message,
+        //   from: displayName,
+        //   to: to,
+        //   createdAt: serverTimestamp(),
+        //   uid,
+        // }
+
+        setMessage(""); // sets the message in the message bar back to empty
         scroll.current.scrollIntoView({ behavior: "smooth" });
         
     };

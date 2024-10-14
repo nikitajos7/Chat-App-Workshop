@@ -18,9 +18,6 @@ app.use(cors({
 
 app.get('/allUsers', (req,res) => {
 
-    // console.log("getApps(): ", getApps())
-    // console.log("getApps().length: ", getApps().length)
-
     let fb_app = null
     if (getApps().length === 0) {
         fb_app = admin.initializeApp({
@@ -30,7 +27,6 @@ app.get('/allUsers', (req,res) => {
     }else{
         fb_app = getApps()[0]
     }
-
 
 
     fb_app && fb_app.auth().listUsers(1000) // lists up to 1000 users
@@ -43,9 +39,6 @@ app.get('/allUsers', (req,res) => {
             } )
 
             res.status(200).json({users: userList})
-
-            // let users = JSON.stringify(listUsersResult);
-            // console.log(users)
 
         })
         .catch(function (error) {
