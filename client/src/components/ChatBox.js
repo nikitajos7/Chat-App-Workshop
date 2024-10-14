@@ -31,13 +31,19 @@ const ChatBox = ({targetUser}) => {
 
       if( user !== null ){
         setLoading(true);
+        const current_user_name = user.displayName
+        
         const q = query(
-            collection(db,"messages"),
-            where("from", "in", [user.displayName, targetUser]),
-            where("to", "in", [user.displayName, targetUser]),
-            orderBy("createdAt", "asc"),
+            collection(db,"dummy_collection" /* TODO: fill in collection name, what was the collection name we stored messages in???*/),
+            where("from", "in", ["fill_in","fill_in"] /* TODO: fill in this array with 2 items, hint we want to get all message between current user and user that the current user is messaging to*/),
+            where("to", "in", ["fill_in","fill_in"] /* TODO: fill in this array with 2 items, same as above*/),
+            orderBy("dummy_field" /*TODO: what field in the document do we want to order the fetched messages? by some kind of date right? */, "asc"),
             limit(50)
         )
+
+        // onSnapshot is the function that enables real-time chat functionality!
+        // It listens to real-time updates to the results from our Firestore query (q in this case)
+        // QuerySnapshot contains the current state of all the documents in the result set of the query
         const unsubscribe = onSnapshot(q,(QuerySnapshot) => {
           const fetchedMsgs = []
           QuerySnapshot.forEach((doc) => fetchedMsgs.push({...doc.data(), id: doc.id}))
@@ -49,9 +55,6 @@ const ChatBox = ({targetUser}) => {
         return () => unsubscribe;
         
       }      
-
-      
-
 
     },[user])
 
