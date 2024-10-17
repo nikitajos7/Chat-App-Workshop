@@ -21,7 +21,7 @@ const SendMessage = ({scroll, to}) => {
 
         //TODO: call addDoc function to add a new message to Firestore Database
 
-        // Here are the fields we want for a message document:
+        // Here are the fields we want for a message document (copy paste to appropriate argument location when calling addDoc):
         // {
         //   text: message,
         //   from: displayName,

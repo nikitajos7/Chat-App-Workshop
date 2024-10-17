@@ -10,14 +10,8 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-  authDomain: "XXXXXXXXXXXXXXXXXXXXXXXX",
-  projectId: "XXXXXXXXX",
-  storageBucket: "XXXXXXXXXXXXXXXXXX",
-  messagingSenderId: "XXXXXXXXXXXX",
-  appId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-};
+// TODO: copy paste your firebaseConfig to here!!!
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
