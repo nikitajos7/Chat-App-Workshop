@@ -34,10 +34,10 @@ const ChatBox = ({targetUser}) => {
         const current_user_name = user.displayName
         
         const q = query(
-            collection(db,"dummy_collection" /* TODO: fill in collection name, what was the collection name we stored messages in???*/),
-            where("from", "in", ["fill_in","fill_in"] /* TODO: fill in this array with 2 items, hint we want to get all message between current user and user that the current user is messaging to*/),
-            where("to", "in", ["fill_in","fill_in"] /* TODO: fill in this array with 2 items, same as above*/),
-            orderBy("dummy_field" /*TODO: what field in the document do we want to order the fetched messages? by some kind of date right? */, "asc"),
+            collection(db,"messages" /* TODO: fill in collection name, what was the collection name we stored messages in???*/),
+            where("from", "in", [current_user_name,targetUser] /* TODO: fill in this array with 2 items, hint we want to get all message between current user and user that the current user is messaging to*/),
+            where("to", "in", [current_user_name,targetUser] /* TODO: fill in this array with 2 items, same as above*/),
+            orderBy("createdAt" /*TODO: what field in the document do we want to order the fetched messages? by some kind of date right? */, "asc"),
             limit(50)
         )
 
@@ -49,7 +49,7 @@ const ChatBox = ({targetUser}) => {
           QuerySnapshot.forEach((doc) => fetchedMsgs.push({...doc.data(), id: doc.id}))
           setMessages(fetchedMsgs)
           setLoading(false);
-          // console.log("fetchedMsgs: ", fetchedMsgs)
+          console.log("fetchedMsgs: ", fetchedMsgs)
         })
         
         return () => unsubscribe;
