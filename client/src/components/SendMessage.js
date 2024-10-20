@@ -20,6 +20,7 @@ const SendMessage = ({scroll, to}) => {
         const { uid, displayName } = auth.currentUser;
 
         //TODO: call addDoc function to add a new message to Firestore Database
+        // So message can be sent
         // Add a new document with a generated id.
         const docRef = await addDoc(collection(db, "messages"), {
                 text: message,
